@@ -39,11 +39,11 @@
 						            </span>
 						            <!-- Pulsante Modifica -->
 						    
-									 <a th:href="@{/pizza/{pizza_id}/offerte/edit/{offerta_id}(pizza_id=${pizza.id}, offerta_id=${offerta.id})}" class="btn btn-sm btn-warning mx-2">
+									 <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/pizza/{pizza_id}/offerte/edit/{offerta_id}(pizza_id=${pizza.id}, offerta_id=${offerta.id})}" class="btn btn-sm btn-warning mx-2">
 					                Modifica
-					            </a>     
+					            	</a>     
 						            <!-- Pulsante Elimina -->
-								 <form th:action="@{'/pizza/offerte/delete/' + ${offerta.id}}" method="POST" class="d-inline">
+								 <form sec:authorize="hasAuthority('ADMIN')" th:action="@{'/pizza/offerte/delete/' + ${offerta.id}}" method="POST" class="d-inline">
 								    <button type="submit" class="btn btn-danger btn-sm">Elimina</button>
 								</form>
 						        </li>
@@ -54,7 +54,7 @@
 			        <p>La pizza non è stata trovata.</p>
 			    </div>
 		</div>
-							<div class="col-12 text-center mt-3">
+							<div class="col-12 text-center mt-3" sec:authorize="hasAuthority('ADMIN')">
 					    <a th:href="@{/pizza/{pizza_id}/offerta (pizza_id=${pizza.getId()})}" class="btn btn-warning">
 					        Crea nuova offerta speciale
 					    </a>

@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class AuthConf {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		
+    	http.csrf().disable();
 		http.authorizeHttpRequests()
 	        .requestMatchers("/pizza/create/**").hasAnyAuthority("ADMIN")
 	        .requestMatchers("/pizza/edit/**").hasAnyAuthority("ADMIN")
